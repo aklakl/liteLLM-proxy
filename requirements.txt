@@ -4,8 +4,5 @@ litellm
 backoff
 redis
 supabase
-nest-asyncio 
-pyngrok 
-uvicorn
-llm
-openai
+nest-asyncio
+pyngrok
