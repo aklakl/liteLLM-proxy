@@ -1,0 +1,10 @@
+
+
+#
+(pyautogen) @aklakl ➜ /workspaces/liteLLM-proxy (main) $ python main.py
+Traceback (most recent call last):
+  File "/workspaces/liteLLM-proxy/main.py", line 8, in <module>
+    import llm as llm
+  File "/workspaces/liteLLM-proxy/llm.py", line 10, in <module>
+    import openai.error
+ModuleNotFoundError: No module named 'openai.error'
