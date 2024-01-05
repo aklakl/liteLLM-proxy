@@ -7,3 +7,5 @@ supabase
 nest-asyncio 
 pyngrok 
 uvicorn
+llm
+openai
