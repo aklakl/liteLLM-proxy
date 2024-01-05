@@ -144,4 +144,10 @@ async def generate_key(request: Request):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=getenv("PORT", 8080))
+    import nest_asyncio
+    from pyngrok import ngrok
+    #uvicorn.run(app, host="0.0.0.0", port=getenv("PORT", 8080))
+    ngrok_tunnel = ngrok.connect(8000)
+    print('Public URL:',ngrok_tunnel.public_url)
+    nest_asyncio.apply()
+    nvicorn.run(app, host=host, port=port)

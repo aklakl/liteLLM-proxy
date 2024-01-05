@@ -4,3 +4,6 @@ litellm
 backoff
 redis
 supabase
+nest-asyncio 
+pyngrok 
+uvicorn
