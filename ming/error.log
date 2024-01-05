@@ -1,6 +1,44 @@
-
-
 #
+Traceback (most recent call last):
+  File "/home/ming/liteLLM-proxy/myenv/lib/python3.11/site-packages/requests/models.py", line 971, in json
+    return complexjson.loads(self.text, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ming/liteLLM-proxy/main.py", line 16, in <module>
+    budget_manager = BudgetManager(project_name=os.getenv("PROJECT_NAME"), client_type="hosted")
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ming/liteLLM-proxy/myenv/lib/python3.11/site-packages/litellm/budget_manager.py", line 19, in __init__
+    self.load_data()
+  File "/home/ming/liteLLM-proxy/myenv/lib/python3.11/site-packages/litellm/budget_manager.py", line 47, in load_data
+    response = response.json()
+               ^^^^^^^^^^^^^^^
+  File "/home/ming/liteLLM-proxy/myenv/lib/python3.11/site-packages/requests/models.py", line 975, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+
+# create venv never got this error.
+Traceback (most recent call last):
+  File "/home/ming/liteLLM-proxy/main.py", line 8, in <module>
+    import llm as llm
+  File "/home/ming/liteLLM-proxy/llm.py", line 5, in <module>
+    from fastapi import HTTPException
+ModuleNotFoundError: No module named 'fastapi'
+
+
+# Changed new openai API, won't got this error any more. refer:https://github.com/aklakl/liteLLM-proxy/blob/6ab716384639500f2c56c54905eeba1bc7bc6659/llm.py#L10
 (pyautogen) @aklakl ➜ /workspaces/liteLLM-proxy (main) $ python main.py
 Traceback (most recent call last):
   File "/workspaces/liteLLM-proxy/main.py", line 8, in <module>

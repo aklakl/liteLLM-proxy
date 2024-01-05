@@ -7,15 +7,7 @@ from fastapi import HTTPException
 from utils import getenv
 
 import backoff
-#import openai.error
-import openai
-'''
-Here can't use openai.error, because OpenAI official docs won't use that, directly use openai.
-OpenAI official APIs Docs=> https://platform.openai.com/docs/guides/error-codes/python-library-error-types
-OpenAI python example in pypi => https://pypi.org/project/openai/
-
-'''
-
+import openai.error
 
 import litellm
 import os
@@ -54,24 +46,24 @@ def handle_llm_exception(e: Exception):
     if isinstance(
         e,
         (
-            openai.APIError,
-            openai.TryAgain,
-            openai.Timeout,
-            openai.ServiceUnavailableError,
+            openai.error.APIError,
+            openai.error.TryAgain,
+            openai.error.Timeout,
+            openai.error.ServiceUnavailableError,
         ),
     ):
         raise RetryConstantError from e
-    elif isinstance(e, openai.RateLimitError):
+    elif isinstance(e, openai.error.RateLimitError):
         raise RetryExpoError from e
     elif isinstance(
         e,
         (
-            openai.APIConnectionError,
-            openai.InvalidRequestError,
-            openai.AuthenticationError,
-            openai.PermissionError,
-            openai.InvalidAPIType,
-            openai.SignatureVerificationError,
+            openai.error.APIConnectionError,
+            openai.error.InvalidRequestError,
+            openai.error.AuthenticationError,
+            openai.error.PermissionError,
+            openai.error.InvalidAPIType,
+            openai.error.SignatureVerificationError,
         ),
     ):
         raise e
