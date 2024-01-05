@@ -70,6 +70,7 @@ apt install python3.11
 apt install python3.11-full
 apt install python3-pip
 apt install git-all
+apt install curl
 
 refer:https://www.linuxcapable.com/how-to-install-python-3-11-on-ubuntu-linux/
 
